@@ -1,27 +1,23 @@
-use cmd_lib::run_cmd;
 use my_macro::wasm_like;
 
 fn main() {
     wasm_like!{
-        local $a 
-        local $b
-        local $c
+        local $i
+
+        _const 10
+        local_set $i
 
         (_loop $my_loop
-            _const 3 
-            local_set $a
+            print_local $i
 
-            _const 4
-            local_set $b
+            local_get $i
+            eqz  
+            br_if $my_loop
 
-            local_get $a
-            local_get $b
-            add
-
-            local_set $c
-            print_local $c
+            local_get $i
+            _const 1
+            sub
+            local_set $i
         )
     };
-
-    // run_cmd!(ls 1);
 }
