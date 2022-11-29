@@ -1,7 +1,7 @@
 use my_macro::wasm_like;
 
 fn main() {
-    wasm_like!{
+    wasm_like! {
         local $i
 
         _const 10
@@ -11,7 +11,7 @@ fn main() {
             print_local $i
 
             local_get $i
-            eqz  
+            eqz
             br_if $my_loop
 
             local_get $i
