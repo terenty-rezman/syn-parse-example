@@ -335,8 +335,10 @@ fn instruction_eqz(_ins: &Instruction) -> TokenStream {
 #[proc_macro_error]
 pub fn wasm_like(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     // eprintln!("{:#?}", input);
-    let instructions_ast = parse_macro_input!(input as Program);
-    // eprintln!("{:#?}", instructions_ast);
-    let result_ast = generate_code(instructions_ast);
-    result_ast.into()
+    let ast = parse_macro_input!(input as Program);
+    // eprintln!("{:#?}", ast);
+    let code = generate_code(ast);
+    // eprintln!("{:#?}", code);
+    // eprintln!("{}", code);
+    code.into()
 }
