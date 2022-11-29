@@ -1,8 +1,7 @@
 use proc_macro2::{Punct, Spacing, TokenStream};
-use proc_macro_error::{abort, abort_call_site, proc_macro_error};
-use quote::{format_ident, quote, TokenStreamExt};
+use proc_macro_error::{abort, proc_macro_error};
+use quote::{quote};
 use syn::parse::{Parse, ParseStream};
-use syn::token::Token;
 use syn::{parenthesized, parse_macro_input, Ident, LitInt, Result, Token};
 
 macro_rules! unwrap_enum {
